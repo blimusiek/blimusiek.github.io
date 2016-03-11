@@ -6,6 +6,7 @@
   "scripts": {
     "build:css": "node-sass scss/ -o dest/css/",
     "watch:css": "npm run build:css -- -w scss/",
+    "server": "http-server ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/blimusiek/blimusiek.github.io#readme",
   "private": true,
   "devDependencies": {
+    "http-server": "0.9.0",
     "node-sass": "3.4.2"
   }
 }
