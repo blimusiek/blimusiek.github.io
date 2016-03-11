@@ -1,0 +1,25 @@
+{
+  "name": "blimusiek.github.io",
+  "version": "1.0.0",
+  "description": "My personal page",
+  "main": "index.html",
+  "scripts": {
+    "build:css": "node-sass scss/ -o dest/css/",
+    "watch:css": "npm run build:css -- -w scss/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blimusiek/blimusiek.github.io.git"
+  },
+  "author": "Maciek Blim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blimusiek/blimusiek.github.io/issues"
+  },
+  "homepage": "https://github.com/blimusiek/blimusiek.github.io#readme",
+  "private": true,
+  "devDependencies": {
+    "node-sass": "3.4.2"
+  }
+}
