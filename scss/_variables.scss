@@ -1,3 +1,6 @@
+$screen-xxs:                  320px !default;
+$screen-xxs-min:              $screen-xxs !default;
+
 $screen-xs:                  480px !default;
 $screen-xs-min:              $screen-xs !default;
 
@@ -15,8 +18,10 @@ $screen-sm-max:              ($screen-md-min - 1) !default;
 $screen-md-max:              ($screen-lg-min - 1) !default;
 
 $body-bg:                    #fff;
-$gray-light:                 rgb(242, 242, 242);
-$brand-primary:              rgb(43, 130, 153);
+$gray-dark:                  rgb(32, 35, 38);
+$gray:                       rgb(65, 66, 68);
+$gray-light:                 rgb(246, 246, 246);
+$brand-primary:              rgb(48, 129, 153);
 $brand-secondary:            rgb(231, 246, 197);
 
 $padding-base-vertical:      6px;
