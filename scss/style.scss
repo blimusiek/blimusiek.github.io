@@ -1,5 +1,6 @@
 @import 'reset';
 @import 'variables';
+@import 'fonts';
 
 @each $direction in left, center, right {
     .text-#{$direction} {
@@ -19,27 +20,36 @@
     }
 }
 
-@mixin font-size-generator($size, $height: 1.3) {
+@mixin font-size-generator($size, $height: 1.55) {
     font-size: #{$size}px;
     font-size: #{$size / 10}rem;
-    line-height: #{$size / 10 * $height}rem
-
+    line-height: $height;
 }
 
 html { font-size: 62.5%; }
 body {
     background-color: $body-bg;
-    @include font-size-generator(16);
+    color: $gray-dark;
+    @include font-size-generator(18);
+    font-family: 'cooper_hewittbook';
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'cooper_hewittbold';
+        padding-top: $padding-large-vertical;
+    }
 }
 
 section {
+    padding: ($padding-large-vertical * 2) 0;
+
     h1 {
         font-size: 14vw;
         line-height: 14vw;
         text-transform : uppercase;
+        color: $brand-primary;
 
         @media screen and (max-width: $screen-sm) {
-            @include font-size-generator(144, 1.1);
+            @include font-size-generator(144);
         }
     }
 
@@ -47,23 +57,57 @@ section {
         font-size: 4vw;
         line-height: 4vw;
         text-transform : uppercase;
+        line-height: 1.1;
 
         @media screen and (max-width: $screen-sm) {
-            @include font-size-generator(48, 1.1);
+            @include font-size-generator(48);
         }
 
         @media screen and (max-width: $screen-sm) {
-            @include font-size-generator(36, 1.1);
+            @include font-size-generator(36);
         }
     }
+    
+    h4 {
+        @include font-size-generator(16);
+    }
 
-    padding: $padding-large-vertical 0;
+    p {
+        @include font-size-generator(16);
+    }
+
+    .period {
+        font-family: 'cooper_hewittlight';
+        @include font-size-generator(12);
+        padding-left: 8px;
+    }
 
     &.contact {
         text-align: right;
+        @include font-size-generator(22);
 
         @media screen and (max-width: $screen-xs) {
             text-align: left;
+        }
+
+        h1.name {
+            @include font-size-generator(32);
+            color: $gray-dark;
+            padding: 20px 0;
+        }
+    }
+
+    &.experience {
+        .label {
+            &.a {
+                @include font-size-generator($font-size-normal + 4);
+            }
+            &.b {
+                @include font-size-generator($font-size-normal);
+            }
+            &.c {
+                @include font-size-generator($font-size-normal - 4);
+            }
         }
     }
 
