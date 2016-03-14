@@ -8,16 +8,22 @@
     }
 }
 
-@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
-    @if $inset == "true" {
-        -webkit-box-shadow:inset $top $left $blur $color;
-        -moz-box-shadow:inset $top $left $blur $color;
-        box-shadow:inset $top $left $blur $color;
+@mixin box-shadow($top, $left, $blur, $color, $inset: 0) {
+    @if $inset == 1 {
+        -webkit-box-shadow: inset $top $left $blur $color;
+        -moz-box-shadow: inset $top $left $blur $color;
+        box-shadow: inset $top $left $blur $color;
     } @else {
         -webkit-box-shadow: $top $left $blur $color;
         -moz-box-shadow: $top $left $blur $color;
         box-shadow: $top $left $blur $color;
     }
+}
+
+@mixin rounded($radius: 0.5em) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
 }
 
 @mixin font-size-generator($size, $height: 1.55) {
@@ -41,6 +47,10 @@ body {
 
 section {
     padding: ($padding-large-vertical * 2) 0;
+
+    a {
+        color: red;
+    }
 
     h1 {
         font-size: 14vw;
@@ -98,7 +108,20 @@ section {
     }
 
     &.experience {
+        .labels {
+            font-family: 'cooper_hewittbold';
+            @include rounded(1vw);
+            @include box-shadow(0, 0, 20px, $brand-primary, 1);
+            border: 1px solid $brand-primary;
+            background-color: $brand-primary-light;
+            color: $gray-light;
+            text-transform: uppercase;
+            padding: 15px;
+            margin: 5px;
+            text-shadow: -1px 0 $brand-primary, 0 1px $brand-primary, 1px 0 $brand-primary, 0 -1px $brand-primary;
+        }
         .label {
+            padding: 0 2px;
             &.a {
                 @include font-size-generator($font-size-normal + 4);
             }
@@ -127,10 +150,13 @@ section {
         }
         .box {
             @include font-size-generator(16);
+            font-family: 'cooper_hewittbold';
             position: relative;
             display: inline-block;
             width: calc((100% / 4) - (2 * 1px));
             margin: 1px;
+
+            text-transform: uppercase;
 
             @media screen and (max-width: $screen-md) {
                 width: calc((100% / 3) - (2 * 1px));
@@ -152,15 +178,149 @@ section {
             
             &.dark {
                 background-color: $gray-dark;
+                .a {
+                    color: $gray-light;
+                }
+                .b {
+                    color: $brand-primary-light;
+                }
+                .c {
+                    color: $brand-primary;
+                }
             }
             &.light {
                 background-color: $gray-light;
+                .a {
+                    color: $gray;
+                }
+                .b {
+                    color: $brand-primary-light;
+                }
+                .c {
+                    color: $gray-dark;
+                }
             }
             &.info {
                 background-color: $gray;
+                .a {
+                    color: $gray-light;
+                }
+                .b {
+                    color: $brand-primary-light;
+                }
+                .c {
+                    color: $brand-primary;
+                }
             }
             &.primary {
                 background-color: $brand-primary;
+                .a {
+                    color: $gray-dark;
+                }
+                .b {
+                    color: $gray-light;
+                }
+                .c {
+                    color: $gray;
+                }
+            }
+
+            .big {
+                font-size: 2vw;
+
+                @media screen and (max-width: $screen-md) {
+                    font-size: 3vw;
+                }
+
+                @media screen and (max-width: $screen-sm) {
+                    font-size: 5vw;
+                }
+
+                @media screen and (max-width: $screen-xs) {
+                    font-size: 7vw;
+                }
+
+                @media screen and (max-width: $screen-xxs) {
+                    font-size: 12vw;
+                }
+            }
+            .medium {
+                font-size: 1vw;
+
+                @media screen and (max-width: $screen-md) {
+                    font-size: 2.2vw;
+                }
+
+                @media screen and (max-width: $screen-sm) {
+                    font-size: 3vw;
+                }
+
+                @media screen and (max-width: $screen-xs) {
+                    font-size: 4vw;
+                }
+
+                @media screen and (max-width: $screen-xxs) {
+                    font-size: 8vw;
+                }
+            }
+            .small {
+                font-size: 0.8vw;
+
+                @media screen and (max-width: $screen-md) {
+                    font-size: 1.4vw;
+                }
+
+                @media screen and (max-width: $screen-sm) {
+                    font-size: 1.8vw;
+                }
+
+                @media screen and (max-width: $screen-xs) {
+                    font-size: 3vw;
+                }
+
+                @media screen and (max-width: $screen-xxs) {
+                    font-size: 6vw;
+                }
+
+                
+                &.small-md {
+                    @media screen and (max-width: $screen-md) and (min-width: $screen-sm) {
+                        font-size: 1.1vw;
+                    }
+                }
+            }
+
+
+            .box-content {
+                position: absolute;
+                padding: 2vw 1vw;
+
+                @media screen and (max-width: $screen-sm) {
+                    padding: 3vw 2vw;
+                }
+
+                @media screen and (max-width: $screen-xs) {
+                    padding: 4vw 2vw;
+                }
+
+                @media screen and (max-width: $screen-xxs) {
+                    padding: 5vw 3vw;
+                }
+
+                &.right {
+                    right: 0 !important;
+                    text-align: right;
+                }
+                &.left {
+                    left: 0 !important;
+                    text-align: left;
+                }
+                &.bottom {
+                    bottom: 0 !important;
+                }
+                &.top {
+                    top: 0 !important;
+                }
             }
 
         }
@@ -168,13 +328,13 @@ section {
 
     article {
         padding: $padding-large-vertical 0;
-
-        .highlight {
-            background-color: $brand-secondary;
-        }
     }
 
     strong {
         color: $brand-primary;
+    }
+
+    .highlight {
+        background-color: $brand-secondary;
     }
 }
